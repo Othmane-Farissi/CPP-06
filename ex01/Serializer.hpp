@@ -1,26 +1,26 @@
 #ifndef SERIALIZER_HPP
-#define SERRIALZER_HPP
+#define SERIALIZER_HPP
 
 #include    <iostream>
-#include <stdint.h> 
+#include <sys/_types/_uintptr_t.h>
+#include <sys/types.h>
 
 typedef struct Data
 {
+    int    number;
     std::string studentName;
-    int         number;
-    Data    *next;
+    Data* next;
 } Data;
 
 
-class Serialize 
+class Serializer 
 {
     private:
-            Serialize();
-            Serialize(const Serialize& src);
-            Serialize& operator=(const Serialize& src);
-            ~Serialize();
-            uniptr_t serialize(Data *ptr);
-            Data    *uniserialize(uniptr_t raw);
+            Serializer();
+            ~Serializer();
+    public:
+            static uintptr_t serialize(Data *ptr);
+            static Data    *deserialize(uintptr_t raw);
 };
 
 #endif

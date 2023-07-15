@@ -1,19 +1,16 @@
 #include    "Serializer.hpp"
 
-Serialize::Serialize() {}
+Serializer::Serializer() {}
 
-Serialize::~Serialize() {}
+Serializer::~Serializer() {}
 
-Serialize::Serialize(const Serialize& src) {}
 
-Serialize&  operator=(const Serialize& src) {}
-
-uintptr_t Serialize::serialize(Data *ptr)
+uintptr_t Serializer::serialize(Data *ptr)
 {
-    return reinterpret_cast<uniptr_t>(ptr);
+    return reinterpret_cast<uintptr_t>(ptr);
 }
 
-Data    *Serialize::uniserialize(uintptr_t raw)
+Data    *Serializer::deserialize(uintptr_t raw)
 {
     return reinterpret_cast<Data *>(raw);
 }
