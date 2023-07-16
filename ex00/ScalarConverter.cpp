@@ -17,6 +17,45 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& src)
 ScalarConverter::~ScalarConverter() {}
 
 
+void    edgeCaseOne(std::string &str)
+{
+        if (str == "nanf")
+        {
+            std::cout << "float: " << "nanf" << std::endl;
+            std::cout << "double: " << "nan" << std::endl;
+        }
+        else if (str == "+inff")
+        {
+            std::cout << "float: " << "+inff" << std::endl;
+            std::cout << "double: " << "+inf" << std::endl;
+        }
+        else if (str == "-inff")
+        {
+            std::cout << "float: " << "-inff" << std::endl;
+            std::cout << "double: " << "-inf" << std::endl;
+        } 
+}
+
+void    edgeCaseTwo(std::string &str)
+{
+        if (str == "nan")
+        {
+            std::cout << "float: " << "nanf" << std::endl;
+            std::cout << "double: " << "nan" << std::endl;
+        }
+        else if (str == "+inf")
+        {
+            std::cout << "float: " << "+inff" << std::endl;
+            std::cout << "double: " << "+inf" << std::endl;
+        }
+        else if (str == "-inf")
+        {
+            std::cout << "float: " << "-inff" << std::endl;
+            std::cout << "double: " << "-inf" << std::endl;
+        } 
+}
+
+
 static bool    isChar(std::string &str) {
     if (str.length() != 1)
         return false;
@@ -134,6 +173,13 @@ void    convToDouble(std::string &str)
     std::istringstream iss(str);
     iss >> i;
 
+    if (str == "+inf" || str == "-inf" || str == "nan")
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int:  impossible" << std::endl;
+        edgeCaseOne(str);
+        return ;
+    }
     if (!isprint(static_cast<int>(i))) {
         std::cout << "char: Non displayable" << std::endl;
     }
@@ -153,6 +199,13 @@ void    convToFloat(std::string &str)
     std::istringstream iss(str1);
     iss >> i;
 
+    if (str == "+inff" || str == "-inff" || str == "nanf")
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int:  impossible" << std::endl;
+        edgeCaseOne(str);
+        return ;
+    }
     if (!isprint(static_cast<int>(i))) {
         std::cout << "char: Non displayable" << std::endl;
     }
