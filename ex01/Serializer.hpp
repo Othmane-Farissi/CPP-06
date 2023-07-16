@@ -2,8 +2,6 @@
 #define SERIALIZER_HPP
 
 #include    <iostream>
-#include <sys/_types/_uintptr_t.h>
-#include <sys/types.h>
 
 typedef struct Data
 {
